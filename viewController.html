@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+		<title>View and controller</title>
+	</head>
+	<body>
+		<div class="container" ng-controller="SimpleController">
+			<ul>
+				<li ng-repeat="customer in customers">
+					{{customer.name}} - {{customer.age}}
+				</li>
+			</ul>
+		</div>
+
+		<script src="scripts/angular.min.js"></script>
+		<script type="text/javascript">
+			angular.module('myApp', []).controller('SimpleController', ['$scope', SimpleController])
+			function SimpleController($scope) {
+				$scope.customers = [
+					{ name: 'Ozmar', age: '23' },
+					{ name: 'Alan', age: '16' },
+					{ name: 'Edgardo', age: '25' }
+				];
+			}
+		</script>
+	</body>
+</html>

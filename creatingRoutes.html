@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html ng-app="demoApp">
+	<head>
+		<title>Adding routes</title>
+	</head>
+	<body>
+		<div class="container" ng-controller="SimpleController">
+			<ng-view></ng-view>
+			<a href="#!/">Partial 1</a>
+			<a href="#!/partial2">Partial 2</a>
+		</div>
+
+		<script src="scripts/angular.min.js"></script>
+		<script src="scripts/angular-route.min.js"></script>
+		<script type="text/javascript">
+			var demoApp = angular.module('demoApp', ['ngRoute']);
+			demoApp.config(['$routeProvider', function($routeProvider) {
+				$routeProvider
+					.when('/', {
+						controller: 'SimpleController',
+						templateUrl: 'partials/view1.html'
+					})
+					.when('/partial2', {
+						controller: 'SimpleController',
+						templateUrl: 'partials/view2.html'
+					})
+					.when('/404', {
+						templateUrl: 'partials/404.html'
+					})
+					.otherwise({redirectTo: '/404'})
+			}]);
+
+			var controllers = {};
+			controllers.SimpleController = function($scope) {
+				var initializeCustomer = function() {
+					$scope.newCustomer = {};
+				}
+
+				$scope.customers = [
+					{ name: 'Ozmar', age: '23' },
+					{ name: 'Alan', age: '16' },
+					{ name: 'Edgardo', age: '25' }
+				];
+
+				$scope.addCustomer = function() {
+					if($scope.newCustomer.name.length > 0 && $scope.newCustomer.age.length > 0) {
+						$scope.customers.push($scope.newCustomer);
+						initializeCustomer();
+					}
+				};
+			}
+			demoApp.controller(controllers);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>View 1</title>
+	</head>
+	<body>
+		<h1>View 1</h1> <br>
+		<div class="container">
+			Name: <input type="text" name="name" ng-model="newCustomer.name"> {{newCostumer.name}} <br>
+			Age <input type="text" name="age" ng-model="newCustomer.age"> {{newCostumer.age}} <br>
+			<button ng-click="addCustomer()">Add the customer</button>
+			<ul>
+				<li ng-repeat="customer in customers">
+					Name: {{customer.name}} <br>
+					Age: {{customer.age}}
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>

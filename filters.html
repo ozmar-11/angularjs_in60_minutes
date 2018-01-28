@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-app>
+	<head>
+		<title>Using Directives</title>
+	</head>
+	<body>
+		<div class="container" ng-init="people=[{name: 'Alan', age: 16}, {name: 'Lorena', age: 51}, {name: 'Edgardo', age: 48}, {name: 'Ozmar', age: 23}]">
+			<input type="text" ng-model="name"> Filter by name: {{name}}
+			<p>Iterating the items in names</p>
+			<ul>
+				<li ng-repeat="person in people | filter:name | orderBy:'name'">
+					name: {{person.name}}, age: {{person.age}}
+				</li>
+			</ul>
+		</div>
+		<script src="scripts/angular.min.js"></script>
+	</body>
+</html>
